@@ -206,22 +206,28 @@
                 <input type="email" id="email" placeholder="" required name="email" translate="no" lang="" size="23">
                 <br><label id='email_error'></label>
                 <br>
-                <!-- <input type="tel" id="phone" placeholder="" name="phone" translate="no" lang="" size="23">
+                <!--  -->
+                <input type="tel" id="phone" placeholder="" list="programId" name="phone" translate="no" lang=""
+                    size="23">
+                <datalist id="programId">
+                </datalist>
+
                 <br><label id='phone_error'></label>
-                <br> -->
+                <br>
                 <!-- srinivas c r start -->
-                <div>
+                <!-- <div>
                     <div class="new">
                         <select id="country" style="width: 60px;height: 25px ;" onchange="country_code()">
+                            <option value="">--select--</option>
                         </select>
                     </div>
                     <div class="new">
                         <input type="tel" style="width: 125px;margin-left: 10px;" id="phone" placeholder="phone number"
                             onkeyup="phncode()" translate="no" lang="" size="12"><br>
                     </div>
-                </div>
+                </div>  -->
                 <label id='phone_error'></label>
-                <!-- srinivas c r ends --> 
+                <!-- srinivas c r ends -->
                 <br><br>
                 <input type="submit" value="Submit" id="submit" translate="no" lang="">
                 <input type="reset" value="Reset" id="reset" translate="no" lang="">
@@ -1177,14 +1183,20 @@
                 }
             ]
         }
-
+        // send data suggestion 
+        for (let index = 0; index < country.countries.length; index++) {
+            let code = country.countries[index].code
+            console.log(code);
+            let counnryName = country.countries[index].name
+            let ele = document.getElementById('programId');
+            ele.innerHTML = ele.innerHTML + '<option value="' + country.countries[index].code + '" >' + country.countries[index].code + '</option>';
+        }
         // console.log(country, "country"); 
         for (let index = 0; index < country.countries.length; index++) {
             let code = country.countries[index].code
             let counnryName = country.countries[index].name
             let ele = document.getElementById('country');
-            ele.innerHTML = ele.innerHTML +
-                '<option value="' + country.countries[index].code + '" >' + country.countries[index].code + '</option>';
+            ele.innerHTML = ele.innerHTML + '<option value="' + country.countries[index].code + '" >' + country.countries[index].code + '</option>';
         }
 
         function country_code() {
@@ -1202,11 +1214,13 @@
             console.log("phone_number", phoneno);
             var result = country.countries.filter(outcode => outcode.code === phoneno);
             console.log(result, "country");
+
             result.forEach(val => {
                 let newres = val.code
                 console.log(val.code);
                 document.getElementById("country").value = newres
             })
+
         } 
     </script>
 </body>
