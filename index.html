@@ -206,13 +206,15 @@
                 <input type="email" id="email" placeholder="" required name="email" translate="no" lang="" size="23">
                 <br><label id='email_error'></label>
                 <br>
-                <!--  -->
+
+                <!--suggestion start  -->
                 <input type="tel" id="phone" placeholder="" list="programId" name="phone" translate="no" lang=""
                     size="23">
                 <datalist id="programId">
                 </datalist>
+                <!--suggestion end  -->
 
-                <br><label id='phone_error'></label> 
+                <br><label id='phone_error'></label>
                 <!-- srinivas c r start -->
                 <!-- <div>
                     <div class="new">
@@ -225,7 +227,6 @@
                             onkeyup="phncode()" translate="no" lang="" size="12"><br>
                     </div>
                 </div>  -->
-                <label id='phone_error'></label>
                 <!-- srinivas c r ends -->
                 <br>
                 <input type="submit" value="Submit" id="submit" translate="no" lang="">
@@ -1185,10 +1186,10 @@
         // send data suggestion 
         for (let index = 0; index < country.countries.length; index++) {
             let code = country.countries[index].code
-            console.log(code);
+            // console.log(code);
             let counnryName = country.countries[index].name
             let ele = document.getElementById('programId');
-            ele.innerHTML = ele.innerHTML + '<option value="' + country.countries[index].code + '" >' + country.countries[index].code + '</option>';
+            ele.innerHTML = ele.innerHTML + '<option value="' + country.countries[index].code + '" >' + country.countries[index].code + "("+country.countries[index].name +")" + '</option>';
         }
         // console.log(country, "country"); 
         for (let index = 0; index < country.countries.length; index++) {
